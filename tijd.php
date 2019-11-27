@@ -1,10 +1,16 @@
 <?php
 
-   $time = readline();
-   $timevalid = strpos($time, "s");
 
-       if ($timevalid === false) {
-       echo "Geen tijd gevonden";
-     } else {
-       echo $time . " Seconden";
-     }
+$staan = "s";
+$input = $argv[1];
+
+$plek = strpos ( $input , $staan);
+var_dump($plek);
+
+if ($plek == false ) {
+    echo "Geen tijd gevonden.";
+    exit();
+}
+$aantalseconden = (int)$input;
+
+echo $aantalseconden . " Seconden";
