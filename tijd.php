@@ -1,16 +1,30 @@
 <?php
 
 
-$staan = "s";
-$input = $argv[1];
+$seconden = 0;
+$minuten = 0;
+$uren = 0;
+$dagen = 0;
+$totaal = 0;
 
-$plek = strpos ( $input , $staan);
-var_dump($plek);
+$explInput = explode(" ", $argv[1]);
 
-if ($plek == false ) {
-    echo "Geen tijd gevonden.";
-    exit();
+for ($i = 0; $i < count($explInput); $i++) {
+    $split = substr($explInput[$i], -1);
+    switch ($split) {
+        case "s":
+            $seconden = (int) $explInput[$i];
+            break;
+        case "m":
+            $minuten = (int) $explInput[$i] * 60;
+            break;
+        case "u":
+            $uren = (int) $explInput[$i] * 3600;
+            break;
+        case "d":
+            $dagen - (int) $explInput[$i] * 86400;
+            break;
+    }
+    $totaal = $seconden + $minuten + $uren + $dagen;
 }
-$aantalseconden = (int)$input;
-
-echo $aantalseconden . " Seconden";
+echo $totaal . " seconden" . PHP_EOL;
